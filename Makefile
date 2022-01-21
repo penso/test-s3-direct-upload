@@ -1,4 +1,5 @@
 create_files:
+	mkdir -p files
 	touch files/0
 	truncate -s 1K files/1
 	truncate -s 10K files/2
