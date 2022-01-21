@@ -8,6 +8,6 @@ This is a small script to benchmark different S3 providers
 
 If you run those on a specific ISP, send a Pull Requests with results
 
-AWS: fastest and very consistent
-Google: slightly slower than S3
-Scaleway: much slower, and massive standard deviation
+* AWS: fastest and very consistent
+* Google: slightly slower than S3
+* Scaleway: much slower, and massive standard deviation
