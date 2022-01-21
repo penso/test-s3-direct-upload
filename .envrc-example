@@ -8,3 +8,9 @@ export SCALEWAY_SECRET_ACCESS_KEY=XXX
 export SCALEWAY_REGION=fr-par
 export SCALEWAY_BUCKET=XXX
 export SCALEWAY_ENDPOINT=https://s3.fr-par.scw.cloud
+
+export GOOGLE_ACCESS_KEY_ID=XXX
+export GOOGLE_SECRET_ACCESS_KEY=XXX
+export GOOGLE_REGION=europe-west1
+export GOOGLE_BUCKET=XXX
+export GOOGLE_ENDPOINT=https://storage.googleapis.com
