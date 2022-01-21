@@ -1,27 +1,41 @@
-aws 0 B              median:     39ms, min:     32ms, max:     42ms, standard_deviation:  2.857
-google 0 B           median:     88ms, min:     69ms, max:     97ms, standard_deviation:  8.487
-scaleway 0 B         median:   1041ms, min:    406ms, max:   2058ms, standard_deviation: 544.566
+aws 0 B                median:    34ms, min:    30ms, max:    48ms, deviation:    7
+scaleway par 0 B       median:  1204ms, min:   336ms, max:  1924ms, deviation:  550
+scaleway ams 0 B       median:   371ms, min:   277ms, max:   442ms, deviation:   51
+scaleway war 0 B       median:   422ms, min:   365ms, max:   447ms, deviation:   35
+google 0 B             median:   102ms, min:    84ms, max:   155ms, deviation:   21
 
-aws 1 KiB            median:     44ms, min:     32ms, max:     64ms, standard_deviation: 10.711
-google 1 KiB         median:     94ms, min:     70ms, max:    119ms, standard_deviation: 14.408
-scaleway 1 KiB       median:    662ms, min:    253ms, max:   1103ms, standard_deviation: 261.718
+aws 1 KiB              median:    44ms, min:    34ms, max:    70ms, deviation:   12
+scaleway par 1 KiB     median:   595ms, min:   294ms, max:  1544ms, deviation:  397
+scaleway ams 1 KiB     median:   448ms, min:   336ms, max:   553ms, deviation:   73
+scaleway war 1 KiB     median:   387ms, min:   354ms, max:   439ms, deviation:   27
+google 1 KiB           median:   103ms, min:    87ms, max:   131ms, deviation:   12
 
-aws 10 KiB           median:     53ms, min:     35ms, max:     70ms, standard_deviation: 12.459
-google 10 KiB        median:     97ms, min:     79ms, max:    127ms, standard_deviation: 13.375
-scaleway 10 KiB      median:    481ms, min:    408ms, max:   1412ms, standard_deviation: 313.153
+aws 10 KiB             median:    59ms, min:    34ms, max:    80ms, deviation:   15
+scaleway par 10 KiB    median:   397ms, min:   241ms, max:  1408ms, deviation:  384
+scaleway ams 10 KiB    median:   409ms, min:   369ms, max:  1176ms, deviation:  243
+scaleway war 10 KiB    median:   374ms, min:   354ms, max:   415ms, deviation:   16
+google 10 KiB          median:    98ms, min:    72ms, max:   137ms, deviation:   19
 
-aws 100 KiB          median:     48ms, min:     43ms, max:    129ms, standard_deviation: 29.741
-google 100 KiB       median:    105ms, min:     88ms, max:    148ms, standard_deviation: 17.929
-scaleway 100 KiB     median:    387ms, min:    249ms, max:    853ms, standard_deviation: 186.44
+aws 100 KiB            median:    51ms, min:    40ms, max:    76ms, deviation:   11
+scaleway par 100 KiB   median:   583ms, min:   177ms, max:  1701ms, deviation:  526
+scaleway ams 100 KiB   median:   538ms, min:   371ms, max:  1047ms, deviation:  197
+scaleway war 100 KiB   median:   374ms, min:   361ms, max:   445ms, deviation:   30
+google 100 KiB         median:   108ms, min:   100ms, max:   115ms, deviation:    6
 
-aws 1 MiB            median:    125ms, min:    103ms, max:    151ms, standard_deviation: 14.766
-google 1 MiB         median:    120ms, min:     98ms, max:    468ms, standard_deviation: 111.038
-scaleway 1 MiB       median:    635ms, min:    321ms, max:   1597ms, standard_deviation: 454.043
+aws 1 MiB              median:   138ms, min:   103ms, max:   162ms, deviation:   16
+scaleway par 1 MiB     median:   786ms, min:   346ms, max:  2807ms, deviation:  813
+scaleway ams 1 MiB     median:   539ms, min:   364ms, max:   990ms, deviation:  190
+scaleway war 1 MiB     median:   401ms, min:   379ms, max:   489ms, deviation:   40
+google 1 MiB           median:   122ms, min:   104ms, max:   134ms, deviation:   10
 
-aws 10 MiB           median:    258ms, min:    230ms, max:    422ms, standard_deviation: 63.295
-google 10 MiB        median:    250ms, min:    232ms, max:    320ms, standard_deviation: 29.855
-scaleway 10 MiB      median:    646ms, min:    392ms, max:   1780ms, standard_deviation: 486.081
+aws 10 MiB             median:   284ms, min:   243ms, max:   396ms, deviation:   51
+scaleway par 10 MiB    median:   836ms, min:   541ms, max:  1708ms, deviation:  440
+scaleway ams 10 MiB    median:   633ms, min:   491ms, max:  1389ms, deviation:  258
+scaleway war 10 MiB    median:   524ms, min:   505ms, max:   592ms, deviation:   29
+google 10 MiB          median:   285ms, min:   237ms, max:   406ms, deviation:   51
 
-aws 100 MiB          median:    886ms, min:    824ms, max:   1311ms, standard_deviation: 142.72
-google 100 MiB       median:   1592ms, min:   1178ms, max:   5251ms, standard_deviation: 1204.098
-scaleway 100 MiB     median:   3201ms, min:   2672ms, max:   4342ms, standard_deviation: 644.541
+aws 100 MiB            median:  1128ms, min:  1037ms, max:  1569ms, deviation:  173
+scaleway par 100 MiB   median:  3021ms, min:  2242ms, max:  5386ms, deviation: 1130
+scaleway ams 100 MiB   median:  1874ms, min:  1749ms, max:  2035ms, deviation:  109
+scaleway war 100 MiB   median:  1700ms, min:  1629ms, max:  2014ms, deviation:  108
+google 100 MiB         median:  1323ms, min:  1111ms, max:  1544ms, deviation:  173
