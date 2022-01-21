@@ -1,4 +1,12 @@
-		                 user     system      total        real
+		                 
+This is a small script to benchmark different S3 providers
+
+1. Write 2 files: `small` and `large`
+2. Copy `.envrc-example` to `.envrc`
+3. Run `direnv allow`
+4. Run `bundle exec ./test_storage.rb`
+
+										 user     system      total        real
 		aws 60 KiB   0.066002   0.022012   0.088014 (  0.887952)
 		aws 60 KiB   median: 83ms, min: 74ms, max: 105ms
 		0  aws 60 KiB 75ms
