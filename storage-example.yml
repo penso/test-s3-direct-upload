@@ -1,0 +1,31 @@
+---
+- name: aws
+  access_key: XXX
+  secret_key: XXX
+  region: eu-west-3
+  bucket: XXX
+  endpoint: https://s3.eu-west-3.amazonaws.com
+- name: scaleway par
+  access_key: XXX
+  secret_key: XXX
+  region: fr-par
+  bucket: XXX
+  endpoint: https://s3.fr-par.scw.cloud
+- name: scaleway ams
+  access_key: XXX
+  secret_key: XXX
+  region: nl-ams
+  bucket: XXX
+  endpoint: https://s3.nl-ams.scw.cloud
+- name: scaleway war
+  access_key: XXX
+  secret_key: XXX
+  region: pl-waw
+  bucket: XXX
+  endpoint: https://s3.pl-waw.scw.cloud
+- name: google
+  access_key: XXX
+  secret_key: XXX
+  region: europe-west1
+  bucket: XXX
+  endpoint: https://storage.googleapis.com

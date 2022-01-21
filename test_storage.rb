@@ -10,6 +10,7 @@ require "faraday"
 require "faraday/net_http"
 require "benchmark"
 require "pry-byebug"
+require "yaml" 
 
 STDOUT.sync = true
 
@@ -82,6 +83,7 @@ def run_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, e
 
   s3 = Aws::S3::Resource.new
   s3.bucket(bucket).object(key).delete
+  puts ""
 end
 
 class Float
@@ -125,28 +127,14 @@ def as_size number
 end
 
 Dir.glob('files/*').each do|file|
-  run_benchmark(service: :aws,
-                access_key: ENV["AWS_ACCESS_KEY_ID"],
-                secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-                region: ENV["AWS_REGION"],
-                bucket: ENV["AWS_BUCKET"],
-                endpoint: ENV["AWS_ENDPOINT"],
-                file: file)
-
-  run_benchmark(service: :google,
-                access_key: ENV["GOOGLE_ACCESS_KEY_ID"],
-                secret_access_key: ENV["GOOGLE_SECRET_ACCESS_KEY"],
-                region: ENV["GOOGLE_REGION"],
-                bucket: ENV["GOOGLE_BUCKET"],
-                endpoint: ENV["GOOGLE_ENDPOINT"],
-                file: file)
-
-  run_benchmark(service: :scaleway,
-                access_key: ENV["SCALEWAY_ACCESS_KEY_ID"],
-                secret_access_key: ENV["SCALEWAY_SECRET_ACCESS_KEY"],
-                region: ENV["SCALEWAY_REGION"],
-                bucket: ENV["SCALEWAY_BUCKET"],
-                endpoint: ENV["SCALEWAY_ENDPOINT"],
-                file: file)
-  puts ""
+  config = YAML.load_file("storage.yml")
+  config.each do |provider|
+    run_benchmark(service: provider["name"],
+                  access_key: provider["access_key"],
+                  secret_access_key: provider["secret_key"],
+                  region: provider["region"],
+                  bucket: provider["bucket"],
+                  endpoint: provider["endpoint"],
+                  file: file)
+  end
 end

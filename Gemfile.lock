@@ -88,6 +88,7 @@ GEM
     tilt (2.0.10)
     unicode-display_width (2.1.0)
     webrick (1.7.0)
+    yaml (0.2.0)
     yard (0.9.27)
       webrick (~> 1.7.0)
 
@@ -101,6 +102,7 @@ DEPENDENCIES
   nokogiri
   pry-byebug
   solargraph
+  yaml
 
 RUBY VERSION
    ruby 3.0.2p107

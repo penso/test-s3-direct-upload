@@ -2,8 +2,7 @@
 This is a small script to benchmark different S3 providers
 
 1. Run `make create_files`
-2. Copy `.envrc-example` to `.envrc`
-3. Run `direnv allow`
+2. Copy `storage-example.yml` to `storage.yml` and fill it up
 4. Run `make run`
 
 If you run those on a specific ISP, send a Pull Requests with results
