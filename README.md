@@ -14,33 +14,33 @@ If you run those on a specific ISP, send a Pull Requests with results
 
 From Orange ISP
 
-	aws 0 B                          median: 50ms, min: 40ms, max: 68ms, standard_deviation: 10.16
-	google 0 B                       median: 116ms, min: 94ms, max: 399ms, standard_deviation: 91.105
-	scaleway 0 B                     median: 460ms, min: 257ms, max: 991ms, standard_deviation: 268.788
+	aws 0 B              median:     48ms, min:     39ms, max:     54ms, standard_deviation:  5.252
+	google 0 B           median:    101ms, min:     82ms, max:    205ms, standard_deviation: 40.725
+	scaleway 0 B         median:   1654ms, min:    537ms, max:   2822ms, standard_deviation: 820.154
 	
-	aws 1 KiB                        median: 55ms, min: 52ms, max: 84ms, standard_deviation: 11.321
-	google 1 KiB                     median: 191ms, min: 84ms, max: 397ms, standard_deviation: 117.533
-	scaleway 1 KiB                   median: 889ms, min: 294ms, max: 1401ms, standard_deviation: 398.709
+	aws 1 KiB            median:     61ms, min:     42ms, max:     78ms, standard_deviation:  9.537
+	google 1 KiB         median:     89ms, min:     72ms, max:    123ms, standard_deviation: 14.686
+	scaleway 1 KiB       median:    532ms, min:    193ms, max:   2005ms, standard_deviation: 687.31
 	
-	aws 10 KiB                       median: 69ms, min: 52ms, max: 92ms, standard_deviation: 14.781
-	google 10 KiB                    median: 117ms, min: 76ms, max: 137ms, standard_deviation: 18.222
-	scaleway 10 KiB                  median: 1005ms, min: 253ms, max: 1546ms, standard_deviation: 374.525
+	aws 10 KiB           median:     66ms, min:     52ms, max:    105ms, standard_deviation: 17.521
+	google 10 KiB        median:    148ms, min:    118ms, max:    190ms, standard_deviation: 24.868
+	scaleway 10 KiB      median:    586ms, min:    285ms, max:   2058ms, standard_deviation: 576.028
 	
-	aws 100 KiB                      median: 85ms, min: 66ms, max: 152ms, standard_deviation: 25.718
-	google 100 KiB                   median: 115ms, min: 104ms, max: 159ms, standard_deviation: 16.844
-	scaleway 100 KiB                 median: 765ms, min: 283ms, max: 1326ms, standard_deviation: 354.788
+	aws 100 KiB          median:    115ms, min:     81ms, max:    149ms, standard_deviation:  21.14
+	google 100 KiB       median:    124ms, min:    116ms, max:    151ms, standard_deviation: 10.518
+	scaleway 100 KiB     median:   1247ms, min:    282ms, max:   2385ms, standard_deviation: 817.927
 	
-	aws 1 MiB                        median: 213ms, min: 173ms, max: 237ms, standard_deviation: 17.428
-	google 1 MiB                     median: 186ms, min: 170ms, max: 209ms, standard_deviation: 15.069
-	scaleway 1 MiB                   median: 996ms, min: 373ms, max: 1782ms, standard_deviation: 421.796
+	aws 1 MiB            median:    228ms, min:    195ms, max:    264ms, standard_deviation: 20.384
+	google 1 MiB         median:    188ms, min:    176ms, max:    212ms, standard_deviation: 10.322
+	scaleway 1 MiB       median:    791ms, min:    455ms, max:   3849ms, standard_deviation: 1075.258
 	
-	aws 10 MiB                       median: 479ms, min: 459ms, max: 566ms, standard_deviation: 35.867
-	google 10 MiB                    median: 450ms, min: 416ms, max: 863ms, standard_deviation: 174.404
-	scaleway 10 MiB                  median: 947ms, min: 529ms, max: 2623ms, standard_deviation: 670.275
+	aws 10 MiB           median:    498ms, min:    462ms, max:    787ms, standard_deviation: 94.949
+	google 10 MiB        median:    447ms, min:    427ms, max:    870ms, standard_deviation: 203.245
+	scaleway 10 MiB      median:   1031ms, min:    485ms, max:   5110ms, standard_deviation: 1340.932
 	
-	aws 100 MiB                      median: 2099ms, min: 1728ms, max: 2665ms, standard_deviation: 337.487
-	google 100 MiB                   median: 2007ms, min: 1725ms, max: 2864ms, standard_deviation: 483.31
-	scaleway 100 MiB                 median: 4644ms, min: 2475ms, max: 9218ms, standard_deviation: 2114.602
+	aws 100 MiB          median:   2177ms, min:   1653ms, max:   2576ms, standard_deviation: 329.263
+	google 100 MiB       median:   2227ms, min:   1755ms, max:   2499ms, standard_deviation: 237.857
+	scaleway 100 MiB     median:   3484ms, min:   1911ms, max:  10303ms, standard_deviation: 2315.799
 
 From Scaleway ISP
 
