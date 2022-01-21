@@ -74,7 +74,7 @@ def run_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, e
       end
     #end
 
-      puts "#{name.ljust(30)}   median: #{median(times).debug}ms, min: #{times.min.debug}ms, max: #{times.max.debug}ms, standard_deviation: #{standard_deviation(times).debug(3)}"
+      puts "#{name.ljust(20)}   median: #{median(times).debug}ms, min: #{times.min.debug}ms, max: #{times.max.debug}ms, standard_deviation: #{standard_deviation(times).debug(3)}"
     #times.each_with_index do |time, index|
       #puts "#{index.to_s.ljust(2)} #{name} #{time.debug}ms"
     #end
