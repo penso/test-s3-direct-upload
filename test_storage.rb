@@ -75,7 +75,7 @@ def run_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, e
       end
     #end
 
-      puts "#{name.ljust(20)} median: #{median(times).debug.rjust(6)}ms, min: #{times.min.debug.rjust(6)}ms, max: #{times.max.debug.rjust(6)}ms, standard_deviation: #{standard_deviation(times).debug(3).rjust(6)}"
+      puts "#{name.ljust(22)} median: #{median(times).debug.rjust(5)}ms, min: #{times.min.debug.rjust(5)}ms, max: #{times.max.debug.rjust(5)}ms, deviation: #{standard_deviation(times).debug(0).rjust(4)}"
     #times.each_with_index do |time, index|
       #puts "#{index.to_s.ljust(2)} #{name} #{time.debug}ms"
     #end
@@ -83,7 +83,9 @@ def run_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, e
 
   s3 = Aws::S3::Resource.new
   s3.bucket(bucket).object(key).delete
-  puts ""
+
+rescue
+  puts "failed: #{$!}"
 end
 
 class Float
@@ -137,4 +139,6 @@ Dir.glob('files/*').each do|file|
                   endpoint: provider["endpoint"],
                   file: file)
   end
+
+  puts ""
 end
