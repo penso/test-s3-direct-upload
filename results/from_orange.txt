@@ -1,41 +1,171 @@
-aws 0 B                median:    54ms, min:    43ms, max:    81ms, deviation:   13
-scaleway par 0 B       median:   581ms, min:   366ms, max:  1400ms, deviation:  325
-scaleway ams 0 B       median:   376ms, min:   303ms, max:   454ms, deviation:   46
-scaleway war 0 B       median:   412ms, min:   389ms, max:   481ms, deviation:   38
-google 0 B             median:   115ms, min:    93ms, max:   238ms, deviation:   41
++------------------------------------------------------------------------------+
+|                       S3 benchmarks on multi provider                        |
++----------------------+-------------+-------------+-------------+-------------+
+| Provider             |      Median |         Min |         Max |   Deviation |
++----------------------+-------------+-------------+-------------+-------------+
+| Testing with file size: 0B                                                   |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          43 |          36 |          54 |           6 |
+| scaleway par         |         822 |         425 |        3434 |        1085 |
+| scaleway ams         |         411 |         323 |         477 |          45 |
+| scaleway war         |         455 |         391 |         485 |          30 |
+| google europe-west-1 |         107 |          74 |         152 |          26 |
+| digitalocean ams3    |          79 |          72 |          82 |           3 |
+| digitalocean fra1    |          92 |          76 |         109 |          10 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          38 |          34 |          56 |           6 |
+| scaleway par         |         248 |         138 |        1195 |         306 |
+| scaleway ams         |         333 |         315 |         385 |          23 |
+| scaleway war         |         311 |         301 |         378 |          29 |
+| google europe-west-1 |          68 |          61 |         134 |          22 |
+| digitalocean ams3    |          65 |          61 |          70 |           3 |
+| digitalocean fra1    |          78 |          73 |          83 |           3 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 1 KiB              median:    70ms, min:    54ms, max:    79ms, deviation:    8
-scaleway par 1 KiB     median:   651ms, min:   354ms, max:  2043ms, deviation:  643
-scaleway ams 1 KiB     median:   481ms, min:   174ms, max:   954ms, deviation:  236
-scaleway war 1 KiB     median:   393ms, min:   385ms, max:   448ms, deviation:   19
-google 1 KiB           median:   105ms, min:    84ms, max:   143ms, deviation:   17
++------------------------------------------------------------------------------+
+| Testing with file size: 1KiB                                                 |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          65 |          52 |          98 |          13 |
+| scaleway par         |         694 |         224 |        1292 |         422 |
+| scaleway ams         |         462 |         342 |         594 |          79 |
+| scaleway war         |         404 |         388 |         433 |          14 |
+| google europe-west-1 |         100 |          78 |         174 |          28 |
+| digitalocean ams3    |          86 |          65 |         112 |          13 |
+| digitalocean fra1    |         103 |          90 |         118 |           9 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          54 |          39 |          65 |           7 |
+| scaleway par         |         322 |         197 |        1640 |         452 |
+| scaleway ams         |         299 |         259 |         393 |          39 |
+| scaleway war         |         315 |         305 |         461 |          47 |
+| google europe-west-1 |          86 |          80 |         136 |          21 |
+| digitalocean ams3    |          67 |          58 |          95 |          11 |
+| digitalocean fra1    |          76 |          70 |          81 |           3 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 10 KiB             median:    66ms, min:    46ms, max:    94ms, deviation:   13
-scaleway par 10 KiB    median:   453ms, min:   270ms, max:  1077ms, deviation:  298
-scaleway ams 10 KiB    median:   503ms, min:   207ms, max:   710ms, deviation:  151
-scaleway war 10 KiB    median:   438ms, min:   378ms, max:   499ms, deviation:   41
-google 10 KiB          median:   123ms, min:    99ms, max:   202ms, deviation:   30
++------------------------------------------------------------------------------+
+| Testing with file size: 10KiB                                                |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          70 |          62 |          97 |          13 |
+| scaleway par         |         777 |         340 |        3665 |        1000 |
+| scaleway ams         |         442 |         371 |         706 |         123 |
+| scaleway war         |         433 |         390 |         487 |          36 |
+| google europe-west-1 |         117 |          90 |         159 |          20 |
+| digitalocean ams3    |          77 |          67 |          89 |           6 |
+| digitalocean fra1    |          98 |          87 |         112 |           8 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          50 |          38 |          62 |           8 |
+| scaleway par         |         603 |         186 |        3223 |         943 |
+| scaleway ams         |         336 |         270 |         354 |          25 |
+| scaleway war         |         325 |         303 |         393 |          36 |
+| google europe-west-1 |          83 |          75 |         105 |          11 |
+| digitalocean ams3    |          74 |          59 |          82 |           7 |
+| digitalocean fra1    |          86 |          84 |          94 |           4 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 100 KiB            median:   106ms, min:    77ms, max:   127ms, deviation:   18
-scaleway par 100 KiB   median:   864ms, min:   367ms, max:  3197ms, deviation:  893
-scaleway ams 100 KiB   median:   606ms, min:   471ms, max:   895ms, deviation:  121
-scaleway war 100 KiB   median:   418ms, min:   393ms, max:   486ms, deviation:   34
-google 100 KiB         median:   136ms, min:   119ms, max:   168ms, deviation:   14
++------------------------------------------------------------------------------+
+| Testing with file size: 100KiB                                               |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          82 |          68 |         112 |          12 |
+| scaleway par         |         452 |         344 |        2071 |         663 |
+| scaleway ams         |         528 |         454 |         986 |         154 |
+| scaleway war         |         401 |         376 |         408 |          11 |
+| google europe-west-1 |         122 |         115 |         141 |           8 |
+| digitalocean ams3    |         119 |         111 |         135 |           9 |
+| digitalocean fra1    |         148 |         130 |         198 |          18 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          59 |          50 |          71 |           7 |
+| scaleway par         |         338 |         198 |        1022 |         254 |
+| scaleway ams         |         387 |         183 |         469 |          92 |
+| scaleway war         |         421 |         410 |         492 |          34 |
+| google europe-west-1 |          85 |          69 |         102 |          11 |
+| digitalocean ams3    |         102 |          93 |         110 |           5 |
+| digitalocean fra1    |         129 |         117 |         136 |           7 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 1 MiB              median:   227ms, min:   195ms, max:   275ms, deviation:   22
-scaleway par 1 MiB     median:  1107ms, min:   305ms, max:  2562ms, deviation:  758
-scaleway ams 1 MiB     median:   709ms, min:   448ms, max:  4341ms, deviation: 1188
-scaleway war 1 MiB     median:   440ms, min:   429ms, max:   499ms, deviation:   26
-google 1 MiB           median:   194ms, min:   183ms, max:   213ms, deviation:    9
++------------------------------------------------------------------------------+
+| Testing with file size: 1MiB                                                 |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |         227 |         200 |         288 |          28 |
+| scaleway par         |         758 |         460 |        3647 |        1071 |
+| scaleway ams         |         590 |         452 |        1144 |         217 |
+| scaleway war         |         443 |         422 |         490 |          22 |
+| google europe-west-1 |         186 |         174 |         201 |           9 |
+| digitalocean ams3    |         256 |         199 |         360 |          67 |
+| digitalocean fra1    |         298 |         227 |         457 |          70 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |          99 |          71 |         139 |          19 |
+| scaleway par         |         393 |         249 |        1332 |         328 |
+| scaleway ams         |         409 |         227 |         525 |          74 |
+| scaleway war         |         538 |         506 |         600 |          36 |
+| google europe-west-1 |         122 |          85 |         233 |          42 |
+| digitalocean ams3    |         144 |         124 |         167 |          12 |
+| digitalocean fra1    |         177 |         163 |         192 |          12 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 10 MiB             median:   480ms, min:   459ms, max:  1135ms, deviation:  208
-scaleway par 10 MiB    median:  1433ms, min:   605ms, max:  2366ms, deviation:  555
-scaleway ams 10 MiB    median:  1726ms, min:   642ms, max:  2213ms, deviation:  546
-scaleway war 10 MiB    median:   712ms, min:   673ms, max:   735ms, deviation:   22
-google 10 MiB          median:   921ms, min:   443ms, max:  1489ms, deviation:  365
++------------------------------------------------------------------------------+
+| Testing with file size: 10MiB                                                |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |         484 |         459 |         628 |          49 |
+| scaleway par         |        1613 |         640 |        2370 |         591 |
+| scaleway ams         |        1012 |         597 |        2238 |         542 |
+| scaleway war         |         723 |         689 |         795 |          30 |
+| google europe-west-1 |         874 |         432 |        1614 |         352 |
+| digitalocean ams3    |         674 |         499 |        1607 |         340 |
+| digitalocean fra1    |         536 |         494 |        1631 |         368 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |         182 |         163 |         365 |          61 |
+| scaleway par         |         568 |         396 |        2124 |         519 |
+| scaleway ams         |         504 |         460 |         578 |          34 |
+| scaleway war         |         688 |         662 |         749 |          28 |
+| google europe-west-1 |         184 |         168 |         319 |          50 |
+| digitalocean ams3    |         233 |         211 |         263 |          14 |
+| digitalocean fra1    |         276 |         263 |         294 |          12 |
++----------------------+-------------+-------------+-------------+-------------+
 
-aws 100 MiB            median:  2036ms, min:  1686ms, max:  2645ms, deviation:  332
-scaleway par 100 MiB   median:  3392ms, min:  1876ms, max:  4655ms, deviation:  924
-scaleway ams 100 MiB   median:  4863ms, min:  1875ms, max:  7101ms, deviation: 2357
-scaleway war 100 MiB   median:  2283ms, min:  2031ms, max:  2410ms, deviation:  107
-google 100 MiB         median:  1834ms, min:  1721ms, max:  2274ms, deviation:  224
++------------------------------------------------------------------------------+
+| Testing with file size: 100MiB                                               |
++------------------------------------------------------------------------------+
+| Direct Upload                                                                |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |        1686 |        1649 |        1703 |          19 |
+| scaleway par         |        4121 |        1898 |        5391 |        1077 |
+| scaleway ams         |        5001 |        1972 |        8313 |        2483 |
+| scaleway war         |        2184 |        1985 |        2546 |         201 |
+| google europe-west-1 |        2024 |        1763 |        3038 |         498 |
+| digitalocean ams3    |        1992 |        1805 |        5613 |        1150 |
+| digitalocean fra1    |        2109 |        1872 |        9638 |        2382 |
++----------------------+-------------+-------------+-------------+-------------+
+| Direct Download                                                              |
++----------------------+-------------+-------------+-------------+-------------+
+| aws eu-west-3        |        1071 |        1066 |        1376 |          96 |
+| scaleway par         |        1761 |        1387 |        3207 |         677 |
+| scaleway ams         |        1384 |        1256 |        1622 |          93 |
+| scaleway war         |        1981 |        1808 |        2414 |         220 |
+| google europe-west-1 |        1014 |         992 |        1048 |          17 |
+| digitalocean ams3    |        1046 |        1025 |        1071 |          15 |
+| digitalocean fra1    |        1153 |        1063 |        1208 |          47 |
++----------------------+-------------+-------------+-------------+-------------+
