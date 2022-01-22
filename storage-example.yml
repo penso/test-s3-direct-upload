@@ -29,3 +29,9 @@
   region: europe-west1
   bucket: XXX
   endpoint: https://storage.googleapis.com
+- name: vultr ewr1
+  access_key: xxx
+  secret_key: xxx
+  region: ewr1
+  bucket: xxx
+  endpoint: https://ewr1.vultrobjects.com
