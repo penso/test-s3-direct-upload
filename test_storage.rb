@@ -236,6 +236,8 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
     t << :separator
 
     config.each do |provider|
+      next if provider["access_key"].size < 5
+
       upload_rows = run_upload_benchmark(service: provider["name"],
                                          access_key: provider["access_key"],
                                          secret_access_key: provider["secret_key"],
@@ -253,6 +255,8 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
     t << :separator
 
     config.each do |provider|
+      next if provider["access_key"].size < 5
+
       download_rows = run_download_benchmark(service: provider["name"],
                                              access_key: provider["access_key"],
                                              secret_access_key: provider["secret_key"],
