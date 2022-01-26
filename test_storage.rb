@@ -18,7 +18,8 @@ STDOUT.sync = true
 def direct_upload(upload_url:, upload_headers:, file:)
   conn = Faraday.new(
     url: upload_url,
-    headers: upload_headers
+    headers: upload_headers,
+    ssl: { verify: false }
   ) do |faraday|
     faraday.adapter :net_http
   end
@@ -38,7 +39,8 @@ end
 
 def download(download_url)
   conn = Faraday.new(
-    url: download_url
+    url: download_url,
+    ssl: { verify: false }
   ) do |faraday|
     faraday.adapter :net_http
   end
@@ -64,7 +66,8 @@ def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, buc
   Aws.config.update(
     region: region,
     endpoint: endpoint,
-    credentials: Aws::Credentials.new(access_key, secret_access_key)
+    credentials: Aws::Credentials.new(access_key, secret_access_key),
+    ssl_verify_peer: false
   )
 
   file_io = IO.read(file)
@@ -239,7 +242,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
                                          region: provider["region"],
                                          bucket: provider["bucket"],
                                          endpoint: provider["endpoint"],
-                                         file: file)
+                                         file: file) || {}
       t << upload_rows.values
     end
 
@@ -256,7 +259,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
                                              region: provider["region"],
                                              bucket: provider["bucket"],
                                              endpoint: provider["endpoint"],
-                                             file: file)
+                                             file: file) || {}
       t << download_rows.values
     end
 
