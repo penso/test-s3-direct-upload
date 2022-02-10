@@ -30,7 +30,7 @@ def direct_upload(upload_url:, upload_headers:, file:)
   end
 
   if response.status != 200
-    puts "ERROR: #{response.status}"
+    puts "ERROR: #{response.status} #{response.body}"
   end
   after = Time.now
 
@@ -50,7 +50,7 @@ def download(download_url)
   end
 
   if response.status != 200
-    puts "ERROR: #{response.status}"
+    puts "ERROR: #{response.status} #{response.body}"
   end
   after = Time.now
 
@@ -62,11 +62,12 @@ def delete(bucket, key)
   s3.bucket(bucket).object(key).delete
 end
 
-def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, file:, count: 10)
+def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, force_path_style:, file:, count: 10)
   Aws.config.update(
     region: region,
     endpoint: endpoint,
     credentials: Aws::Credentials.new(access_key, secret_access_key),
+    force_path_style: force_path_style,
     ssl_verify_peer: false
   )
 
@@ -118,7 +119,7 @@ rescue
   puts "failed: #{$!}"
 end
 
-def run_download_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, file:, count: 10)
+def run_download_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, force_path_style:, file:, count: 10)
   Aws.config.update(
     region: region,
     endpoint: endpoint,
@@ -236,7 +237,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
     t << :separator
 
     config.each do |provider|
-      next if provider["access_key"].size < 5
+      next if provider["access_key"].size < 2
 
       upload_rows = run_upload_benchmark(service: provider["name"],
                                          access_key: provider["access_key"],
@@ -244,6 +245,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
                                          region: provider["region"],
                                          bucket: provider["bucket"],
                                          endpoint: provider["endpoint"],
+                                         force_path_style: provider["force_path_style"] || false,
                                          file: file) || {}
       t << upload_rows.values
     end
@@ -255,7 +257,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
     t << :separator
 
     config.each do |provider|
-      next if provider["access_key"].size < 5
+      next if provider["access_key"].size < 2
 
       download_rows = run_download_benchmark(service: provider["name"],
                                              access_key: provider["access_key"],
@@ -263,6 +265,7 @@ table = Terminal::Table.new title: "S3 benchmarks on multi provider",
                                              region: provider["region"],
                                              bucket: provider["bucket"],
                                              endpoint: provider["endpoint"],
+                                             force_path_style: provider["force_path_style"] || false,
                                              file: file) || {}
       t << download_rows.values
     end

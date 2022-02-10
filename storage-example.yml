@@ -5,6 +5,7 @@
   region: eu-west-3
   bucket: XXX
   endpoint: https://s3.eu-west-3.amazonaws.com
+  # force_path_style: true
 - name: scaleway par
   access_key: XXX
   secret_key: XXX
