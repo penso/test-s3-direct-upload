@@ -1,17 +1,20 @@
 #!/usr/bin/env ruby
-# 
+#
+# frozen_string_literal: true
+
+#
 # This will test speed for S3 storage for different provider. Ugly script...
 # Set buckets in `storage.yml`
 
-require "aws-sdk-s3"
-require "aws-sdk-core"
-require "base64"
-require "faraday"
-require "faraday/net_http"
-require "benchmark"
-require "pry-byebug"
-require "yaml" 
-require "terminal-table"
+require 'aws-sdk-s3'
+require 'aws-sdk-core'
+require 'base64'
+require 'faraday'
+require 'faraday/net_http'
+require 'benchmark'
+require 'pry-byebug'
+require 'yaml'
+require 'terminal-table'
 
 STDOUT.sync = true
 
@@ -29,9 +32,7 @@ def direct_upload(upload_url:, upload_headers:, file:)
     req.body = File.binread(file)
   end
 
-  if response.status != 200
-    puts "ERROR: #{response.status} #{response.body}"
-  end
+  puts "ERROR: #{response.status} #{response.body}" if response.status != 200
   after = Time.now
 
   after - before
@@ -49,9 +50,7 @@ def download(download_url)
   response = conn.get do |req|
   end
 
-  if response.status != 200
-    puts "ERROR: #{response.status} #{response.body}"
-  end
+  puts "ERROR: #{response.status} #{response.body}" if response.status != 200
   after = Time.now
 
   after - before
@@ -62,7 +61,8 @@ def delete(bucket, key)
   s3.bucket(bucket).object(key).delete
 end
 
-def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, force_path_style:, file:, count: 10)
+def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, force_path_style:, file:,
+                         endpoint: nil, count: 10)
   Aws.config.update(
     region: region,
     endpoint: endpoint,
@@ -74,8 +74,8 @@ def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, buc
   file_io = IO.read(file)
   checksum = Digest::MD5.base64digest(file_io)
   content_length = file_io.bytesize
-  content_type = "application/octet-stream"
-  key = "test_file"
+  content_type = 'application/octet-stream'
+  key = 'test_file'
   content_disposition = "inline; filename=\"test_file\"; filename*=UTF-8''test_file"
 
   times = []
@@ -89,16 +89,16 @@ def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, buc
     content_type: content_type,
     content_length: content_length,
     content_md5: checksum,
-    whitelist_headers: ["content-length"],
+    whitelist_headers: ['content-length'],
     bucket: bucket,
     key: key
   }
 
   url = signer.presigned_url(:put_object, params)
-  headers = { "Content-Type" => content_type,
-              "Content-MD5" => checksum,
-              "Content-Disposition" => content_disposition,
-              "Content-Length" => content_length.to_s}
+  headers = { 'Content-Type' => content_type,
+              'Content-MD5' => checksum,
+              'Content-Disposition' => content_disposition,
+              'Content-Length' => content_length.to_s }
   count.times do
     times << direct_upload(upload_url: url, upload_headers: headers, file: file)
   end
@@ -115,11 +115,12 @@ def run_upload_benchmark(service:, access_key:, secret_access_key:, region:, buc
     max: times.max.debug,
     deviation: standard_deviation(times).debug(0)
   }
-rescue
+rescue StandardError
   puts "failed: #{$!}"
 end
 
-def run_download_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, endpoint: nil, force_path_style:, file:, count: 10)
+def run_download_benchmark(service:, access_key:, secret_access_key:, region:, bucket:, force_path_style:, file:,
+                           endpoint: nil, count: 10)
   Aws.config.update(
     region: region,
     endpoint: endpoint,
@@ -129,8 +130,8 @@ def run_download_benchmark(service:, access_key:, secret_access_key:, region:, b
   file_io = IO.read(file)
   checksum = Digest::MD5.base64digest(file_io)
   content_length = file_io.bytesize
-  content_type = "application/octet-stream"
-  key = "test_file"
+  content_type = 'application/octet-stream'
+  key = 'test_file'
   content_disposition = "inline; filename=\"test_file\"; filename*=UTF-8''test_file"
   signer = Aws::S3::Presigner.new
 
@@ -139,16 +140,16 @@ def run_download_benchmark(service:, access_key:, secret_access_key:, region:, b
     content_type: content_type,
     content_length: content_length,
     content_md5: checksum,
-    whitelist_headers: ["content-length"],
+    whitelist_headers: ['content-length'],
     bucket: bucket,
     key: key
   }
 
   url = signer.presigned_url(:put_object, params)
-  headers = { "Content-Type" => content_type,
-              "Content-MD5" => checksum,
-              "Content-Disposition" => content_disposition,
-              "Content-Length" => content_length.to_s}
+  headers = { 'Content-Type' => content_type,
+              'Content-MD5' => checksum,
+              'Content-Disposition' => content_disposition,
+              'Content-Length' => content_length.to_s }
   direct_upload(upload_url: url, upload_headers: headers, file: file)
 
   url = signer.presigned_url(:get_object, bucket: bucket, key: key)
@@ -181,6 +182,7 @@ end
 
 def median(array)
   return nil if array.empty?
+
   sorted = array.sort
   len = sorted.length
   (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
@@ -190,90 +192,89 @@ end
 def standard_deviation(array)
   n = array.size
   array.map!(&:to_f)
-  mean = array.reduce(&:+)/n
-  sum_sqr = array.map {|x| x * x}.reduce(&:+)
-  std_dev = Math.sqrt((sum_sqr - n * mean * mean)/(n-1))
+  mean = array.reduce(&:+) / n
+  sum_sqr = array.map { |x| x * x }.reduce(&:+)
+  Math.sqrt((sum_sqr - n * mean * mean) / (n - 1))
 end
 
-UNITS = %W(B KiB MiB GiB TiB).freeze
+UNITS = %w[B KiB MiB GiB TiB].freeze
 
-def as_size number
+def as_size(number)
   if number.to_i < 1024
     exponent = 0
 
   else
     max_exp  = UNITS.size - 1
 
-    exponent = ( Math.log( number ) / Math.log( 1024 ) ).to_i # convert to base
+    exponent = (Math.log(number) / Math.log(1024)).to_i # convert to base
     exponent = max_exp if exponent > max_exp # we need this to avoid overflow for the highest unit
 
-    number  /= 1024 ** exponent
+    number  /= 1024**exponent
   end
 
-  "#{number}#{UNITS[ exponent ]}"
+  "#{number}#{UNITS[exponent]}"
 end
 
-table = Terminal::Table.new title: "S3 benchmarks on multi provider",
-  style: { width: 80 },
-  headings: ['Provider',
-             {value: 'Median', alignment: :right},
-             {value: 'Min', alignment: :right},
-             {value: 'Max', alignment: :right},
-             {value: 'Deviation', alignment: :right}] do |t|
-
+table = Terminal::Table.new title: 'S3 benchmarks on multi provider',
+                            style: { width: 80 },
+                            headings: ['Provider',
+                                       { value: 'Median', alignment: :right },
+                                       { value: 'Min', alignment: :right },
+                                       { value: 'Max', alignment: :right },
+                                       { value: 'Deviation', alignment: :right }] do |t|
   Dir.glob('files/*').each do |file|
-    config = YAML.load_file("storage.yml")
+    config = YAML.load_file('storage.yml')
 
     file_io = IO.read(file)
     content_length = file_io.bytesize
 
     puts "Testing with file size: #{as_size(content_length)}"
-    puts "Direct Upload"
+    puts 'Direct Upload'
 
     t << :separator if t.rows.any?
-    t << [{value: "Testing with file size: #{as_size(content_length)}", alignment: :left, colspan: 5}]
+    t << [{ value: "Testing with file size: #{as_size(content_length)}", alignment: :left, colspan: 5 }]
     t << :separator
-    t << [{value: "Direct Upload", alignment: :left, colspan: 5}]
+    t << [{ value: 'Direct Upload', alignment: :left, colspan: 5 }]
     t << :separator
 
     config.each do |provider|
-      next if provider["access_key"].size < 2
+      next if provider['access_key'].size < 2
 
-      upload_rows = run_upload_benchmark(service: provider["name"],
-                                         access_key: provider["access_key"],
-                                         secret_access_key: provider["secret_key"],
-                                         region: provider["region"],
-                                         bucket: provider["bucket"],
-                                         endpoint: provider["endpoint"],
-                                         force_path_style: provider["force_path_style"] || false,
+      upload_rows = run_upload_benchmark(service: provider['name'],
+                                         access_key: provider['access_key'],
+                                         secret_access_key: provider['secret_key'],
+                                         region: provider['region'],
+                                         bucket: provider['bucket'],
+                                         endpoint: provider['endpoint'],
+                                         force_path_style: provider['force_path_style'] || false,
                                          file: file) || {}
       t << upload_rows.values
     end
 
-    puts "Direct Download"
+    puts 'Direct Download'
 
     t << :separator
-    t << [{value: "Direct Download", alignment: :left, colspan: 5}]
+    t << [{ value: 'Direct Download', alignment: :left, colspan: 5 }]
     t << :separator
 
     config.each do |provider|
-      next if provider["access_key"].size < 2
+      next if provider['access_key'].size < 2
 
-      download_rows = run_download_benchmark(service: provider["name"],
-                                             access_key: provider["access_key"],
-                                             secret_access_key: provider["secret_key"],
-                                             region: provider["region"],
-                                             bucket: provider["bucket"],
-                                             endpoint: provider["endpoint"],
-                                             force_path_style: provider["force_path_style"] || false,
+      download_rows = run_download_benchmark(service: provider['name'],
+                                             access_key: provider['access_key'],
+                                             secret_access_key: provider['secret_key'],
+                                             region: provider['region'],
+                                             bucket: provider['bucket'],
+                                             endpoint: provider['endpoint'],
+                                             force_path_style: provider['force_path_style'] || false,
                                              file: file) || {}
       t << download_rows.values
     end
 
     t << :separator
-    t << [{value: "", colspan: 5}]
+    t << [{ value: '', colspan: 5 }]
 
-    puts ""
+    puts ''
   end
 end
 

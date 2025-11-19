@@ -1,11 +1,12 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-ruby "3.0.2"
+ruby '3.4.5'
 
-gem "aws-sdk-s3"
-gem "faraday"
-gem "pry-byebug"
-gem "nokogiri"
-gem "solargraph"
-gem "yaml"
-gem "terminal-table"
+gem 'aws-sdk-s3'
+gem 'faraday'
+gem 'irb'
+gem 'nokogiri'
+gem 'pry-byebug'
+gem 'solargraph'
+gem 'terminal-table'
+gem 'yaml'
